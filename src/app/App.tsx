@@ -1,18 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, Text, TextStyle, View, ViewStyle } from 'react-native';
+import { SafeAreaView, Text, ViewStyle } from 'react-native';
 import { globalStyles } from '../styles/globals.styles';
-import { ButtonNavigation } from '../components/buttonsNavigation';
-import { Book, BookOpen, Home, User2Icon } from 'lucide-react-native';
+import { Header } from '../layouts/header';
+import { useState } from 'react';
+import { View } from 'lucide-react';
 
 export default function App() {
+
+  const [selected, setSelected] = useState<"home" | "book" | "bookopen" | "user">("home");
+
   return (
     <SafeAreaView style={globalStyles.container as ViewStyle}>
-        <View style={globalStyles.header as ViewStyle}>
-          <ButtonNavigation icon={Home} size='lg'/>
-          <ButtonNavigation icon={Book} size='lg'/>
-          <ButtonNavigation icon={BookOpen} size='lg'/>
-          <ButtonNavigation icon={User2Icon} size='lg'/>
+        <View style={globalStyles.container}>
+          <Text>Hello World</Text>
         </View>
+
+        <Header selected={selected} setSelected={setSelected}/>
         <StatusBar style="light" translucent={true} />
     </SafeAreaView>
   );
